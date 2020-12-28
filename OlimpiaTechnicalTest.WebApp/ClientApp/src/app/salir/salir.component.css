@@ -1,0 +1,42 @@
+form{
+    width: 600px;
+}
+
+input[type="text"],span{
+    display:inline;
+}
+
+label {
+  font-weight: bold;
+  width: 100%;
+}
+
+button{
+    margin-top: 25px;
+}
+
+input[type="text"] {
+  width: 200px;
+  margin-right: 10px;
+}
+
+input[type="number"] {
+  width: 200px;
+  margin-right: 10px;
+}
+span {
+  color:red;
+}
+
+div{
+    margin-top: 10px;
+}
+
+.input_valid{
+  background: white;
+}
+
+.input_invalid {
+  background: red;
+  color: white;
+}

@@ -1,0 +1,50 @@
+<div *ngIf="canEnter">
+  <div *ngIf="wasSuccessful">
+    <div class="alert alert-success" role="alert">
+      <p>Se ha ingresado satifactoriamente el aficionado</p>
+    </div>
+  </div>
+  <form #aficionadoForm="ngForm" (ngSubmit)="onSubmit();">
+    <div>
+      <label>Nombre: </label>
+      <input type="text" name="nombre" placeholder="Nombres" #nombre="ngModel" [(ngModel)]="aficionadoModel.Nombre" required pattern="[a-zA-Z ]+">
+      <span *ngIf="nombre.touched && !nombre.valid">Ingresar correctamente el campo Nombre</span>
+    </div>
+    <div>
+      <label>Apellido: </label>
+      <input type="text" name="apellido" placeholder="Apellido" #apellido="ngModel" [(ngModel)]="aficionadoModel.Apellido" required pattern="[a-zA-Z ]+">
+      <span *ngIf="apellido.touched && !apellido.valid">Ingresar correctamente el campo Apellido</span>
+    </div>
+    <div>
+      <label>Nro de  Identificación: </label>
+      <input type="text" name="nroIdentificacion" placeholder="Nroidentificacion" #nroIdentificacion="ngModel" [(ngModel)]="aficionadoModel.NroIdentificacion" required pattern="[0-9.]+">
+      <span *ngIf="nroIdentificacion.touched && !nroIdentificacion.valid">Ingresar correctamente el campo Nombre</span>
+    </div>
+    <div>
+      <label>Edad: </label>
+      <input type="number" name="edad" placeholder="Edad" #edad="ngModel" [(ngModel)]="aficionadoModel.Edad" required pattern="[0-9]+">
+      <span *ngIf="edad.touched && !edad.valid">Ingresar correctamente el campo Edad</span>
+    </div>
+    <div>
+      <label>Nro. telefonico: </label>
+      <input type="text" name="nroTelefonico" placeholder="NroTelefonico" #nroTelefonico="ngModel" [(ngModel)]="aficionadoModel.NroTelefonico" required pattern="[0-9]+">
+      <span *ngIf="nroTelefonico.touched && !nroTelefonico.valid">Ingresar correctamente el campo Nro. Telefonico</span>
+    </div>
+    <div>
+      <label>Correo electronico: </label>
+      <input type="text" name="email" placeholder="Email" #email="ngModel" [(ngModel)]="aficionadoModel.Email" required>
+      <span *ngIf="email.touched && !email.valid">Ingresar correctamente el campo Email</span>
+    </div>
+    <div>
+      <label>Temperatura: </label>
+      <input type="number" name="temperaturaCelsius" placeholder="TemperaturaCelsius" #temperaturaCelsius="ngModel" [(ngModel)]="aficionadoModel.TemperaturaCelsius" required pattern="[0-9.]+" min="30" max="38">
+      <span *ngIf="temperaturaCelsius.touched && !temperaturaCelsius.valid">Ingresar correctamente el campo Temperatura</span>
+    </div>
+    <button type="submit" [disabled]="!aficionadoForm.form.valid">Guardar</button>
+  </form>
+</div>
+<div *ngIf="canEnter !== undefined && !canEnter">
+  <div class="alert alert-danger" role="alert">
+    <p>Se ha superado el número máximo de aficionados en el Estadio</p>
+  </div>
+</div>

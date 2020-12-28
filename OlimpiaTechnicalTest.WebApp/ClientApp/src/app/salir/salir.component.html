@@ -1,0 +1,14 @@
+<p>Ingrese documento de identidad para poder salir</p>
+<div *ngIf="wasSuccessful">
+  <div class="alert alert-success" role="alert">
+    <p>Se ha ingresado satifactoriamente el aficionado</p>
+  </div>
+</div>
+<form #aficionadoForm="ngForm" (ngSubmit)="onSubmit();">
+  <div>
+    <label>Nro de  Identificación: </label>
+    <input type="text" name="nroIdentificacion" placeholder="Nroidentificacion" #nroIdentificacion="ngModel" [(ngModel)]="aficionadoModel.NroIdentificacion" required pattern="[0-9.]+">
+    <span *ngIf="nroIdentificacion.touched && !nroIdentificacion.valid">Ingresar correctamente el campo Nombre</span>
+  </div>
+  <button type="submit" [disabled]="!aficionadoForm.form.valid">Consultar</button>
+</form>
