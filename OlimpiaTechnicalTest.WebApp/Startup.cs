@@ -29,7 +29,7 @@ namespace OlimpiaTechnicalTest.WebApp
             });
 
             services.AddMvcCore().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
-            var connectionString = @"Servidor=.;Database=OlimpiaTechnicalTest.DB;Trusted_Connection=True;ConnectRetryCount=0";
+            var connectionString = @"Server=.;Database=OlimpiaTechnicalTest.DB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
         }
 
@@ -79,8 +79,12 @@ namespace OlimpiaTechnicalTest.WebApp
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
+                context.Database.Migrate();
+                //Solo para restaurar desde cero la base de datos 
+                /*
                 context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
+                */
             }
         }
     }
